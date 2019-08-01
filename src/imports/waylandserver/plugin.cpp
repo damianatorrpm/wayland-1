@@ -28,11 +28,13 @@
 #include <LiriWaylandServer/KdeServerDecoration>
 #include <LiriWaylandServer/LiriDecoration>
 #include <LiriWaylandServer/ShellHelper>
+#include <LiriWaylandServer/WlrOutputManagerV1>
 
 Q_COMPOSITOR_DECLARE_QUICK_EXTENSION_CLASS(GtkShell)
 Q_COMPOSITOR_DECLARE_QUICK_EXTENSION_CLASS(KdeServerDecorationManager)
 Q_COMPOSITOR_DECLARE_QUICK_EXTENSION_CLASS(LiriDecorationManager)
 Q_COMPOSITOR_DECLARE_QUICK_EXTENSION_CLASS(ShellHelper)
+Q_COMPOSITOR_DECLARE_QUICK_EXTENSION_CLASS(WlrOutputManagerV1)
 
 class WaylandServerPlugin : public QQmlExtensionPlugin
 {
@@ -59,6 +61,14 @@ public:
                                                    QStringLiteral("Cannot create instance of LiriDecoration"));
 
         qmlRegisterType<ShellHelperQuickExtension>(uri, versionMajor, versionMinor, "ShellHelper");
+
+        qmlRegisterType<WlrOutputManagerV1QuickExtension>(uri, versionMajor, versionMinor, "WlrOutputManagerV1");
+        qmlRegisterType<WlrOutputHeadV1Qml>(uri, versionMajor, versionMinor, "WlrOutputHeadV1");
+        qmlRegisterType<WlrOutputModeV1>(uri, versionMajor, versionMinor, "WlrOutputModeV1");
+        qmlRegisterType<WlrOutputManagerV1QuickExtension>(uri, versionMajor, versionMinor, "WlrOutputManagerV1");
+        qmlRegisterType<WlrOutputConfigurationV1>(uri, versionMajor, versionMinor, "WlrOutputConfigurationV1");
+        qmlRegisterUncreatableType<WlrOutputConfigurationHeadV1>(uri, versionMajor, versionMinor, "WlrOutputConfigurationHeadV1",
+                                                                 QStringLiteral("Cannot create instance of WlrOutputConfigurationHeadV1"));
     }
 };
 
